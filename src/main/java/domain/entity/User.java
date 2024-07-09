@@ -1,16 +1,16 @@
 package domain.entity;
 
 public class User {
-    private Long id;
+    private int id;
     private String name;
     private String email;
     public User() {
     }
-    public Long getId() {
+    public int getId() {
         return id;
     }
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(int id2) {
+        this.id = id2;
     }
     public String getName() {
         return name;

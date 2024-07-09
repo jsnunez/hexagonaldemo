@@ -24,7 +24,7 @@ public class UserRepository implements UserService {
 
             try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
-                    user.setId(generatedKeys.getLong(1));
+                    user.setId(generatedKeys.getInt(1));
                 }
             }
 
@@ -34,10 +34,9 @@ public class UserRepository implements UserService {
     }
 
     @Override
-    public User findUserById(Long id) {
+    public User findUserById(int id) {
         String sql = "SELECT id, name, email FROM users WHERE id = ?";
         User user = null;
-
         try (Connection connection = DatabaseConfig.getConnection();
                 PreparedStatement statement = connection.prepareStatement(sql)) {
 
@@ -45,7 +44,7 @@ public class UserRepository implements UserService {
             try (ResultSet resultSet = statement.executeQuery()) {
                 if (resultSet.next()) {
                     user = new User();
-                    user.setId(resultSet.getLong("id"));
+                    user.setId(resultSet.getInt("id"));
                     user.setName(resultSet.getString("name"));
                     user.setEmail(resultSet.getString("email"));
                 }
@@ -58,4 +57,43 @@ public class UserRepository implements UserService {
         return user;
     }
 
-}
+    @Override
+    public int DeleteUserById(int id) {
+        String sql = "DELETE FROM users WHERE id = ?";
+        int rowsUpdate = 0;
+    
+        try (Connection connection = DatabaseConfig.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+    
+            statement.setInt(1, id);
+            rowsUpdate = statement.executeUpdate();
+    
+            System.out.println("Número de filas eliminadas: " + rowsUpdate);
+    
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return rowsUpdate;
+    }
+
+    @Override
+    public void updatUserById(User user) {
+        String sql = "UPDATE users SET name = ?,email=? WHERE id = ?";
+      
+        try (Connection connection = DatabaseConfig.getConnection();
+        PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setString(1, user.getName());
+            statement.setString(2, user.getEmail());
+            statement.setInt(3, user.getId());
+
+           int rowsUpdate = statement.executeUpdate();
+       System.out.println("Numero de filas actualizadas  " + rowsUpdate);
+    
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    
+   
+}}
