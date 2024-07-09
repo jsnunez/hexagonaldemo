@@ -15,13 +15,16 @@ public class UserController {
 
     
     public UserController(CreateUserUseCase createUserUseCase, FindUserUseCase findUserUseCase,
-            application.UpdateCaseUseUSer updateCaseUseUSer, DeleteUserUseCase deleteUserUseCase) {
+            DeleteUserUseCase deleteUserUseCase, application.UpdateCaseUseUSer updateCaseUseUSer) {
         this.createUserUseCase = createUserUseCase;
         this.findUserUseCase = findUserUseCase;
         this.deleteUserUseCase = deleteUserUseCase;
         UpdateCaseUseUSer = updateCaseUseUSer;
     }
 
+
+
+    
 
 
 

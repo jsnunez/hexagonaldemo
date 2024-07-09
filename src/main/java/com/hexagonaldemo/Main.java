@@ -12,15 +12,16 @@ import infrastructure.out.UserRepository;
 
 public class Main {
     public static void main(String[] args) {
+
+
         UserService userService = new UserRepository();
+
         CreateUserUseCase createUserUseCase = new CreateUserUseCase(userService);
         FindUserUseCase findUserUseCase = new FindUserUseCase(userService);
         UpdateCaseUseUSer updateCaseUseUSer = new UpdateCaseUseUSer(userService);
         DeleteUserUseCase deleteUserUseCase = new DeleteUserUseCase(userService);
-        UserController consoleAdapter = new UserController(createUserUseCase,findUserUseCase,updateCaseUseUSer,deleteUserUseCase);
 
-
-
+        UserController consoleAdapter = new UserController(createUserUseCase,findUserUseCase,deleteUserUseCase,updateCaseUseUSer);
         
         Object[] options = { "Crear usuario", "Buscar ususario", "Editar usuario", "Eliminar usuario, Salir" };
         Object color = JOptionPane.showInputDialog(null, "Seleccione Una Opcion", 
@@ -33,23 +34,27 @@ public class Main {
                 break;
             }
         }
-       
         if (selectedIndex == 0) {
-           
+
             consoleAdapter.start();
         }
         if (selectedIndex == 1) {
          
-          consoleAdapter.buscar();
+
+            consoleAdapter.buscar();
         }
         if (selectedIndex == 2) {
          
-          
+          //  UserController consoleAdapter = new UserController(updateCaseUseUSer);
+
             consoleAdapter.modificar();
                 }
 
         if (selectedIndex == 3) {
          
+           
+            //UserController consoleAdapter = new UserController(deleteUserUseCase);
+
             consoleAdapter.eliminar();
         }
 
