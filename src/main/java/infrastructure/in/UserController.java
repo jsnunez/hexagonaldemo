@@ -9,24 +9,20 @@ import java.util.Scanner;
 
 public class UserController {
     private CreateUserUseCase createUserUseCase;
-
-    public UserController(CreateUserUseCase createUserUseCase) {
-        this.createUserUseCase = createUserUseCase;
-    }
     private FindUserUseCase findUserUseCase;
+    private DeleteUserUseCase deleteUserUseCase;
+    private UpdateCaseUseUSer UpdateCaseUseUSer;
 
-    public UserController(FindUserUseCase findUserUseCase) {
+    
+    public UserController(CreateUserUseCase createUserUseCase, FindUserUseCase findUserUseCase,
+            application.UpdateCaseUseUSer updateCaseUseUSer, DeleteUserUseCase deleteUserUseCase) {
+        this.createUserUseCase = createUserUseCase;
         this.findUserUseCase = findUserUseCase;
+        this.deleteUserUseCase = deleteUserUseCase;
+        UpdateCaseUseUSer = updateCaseUseUSer;
     }
 
-private DeleteUserUseCase deleteUserUseCase;
-public UserController(DeleteUserUseCase deleteUserUseCase) {
-    this.deleteUserUseCase = deleteUserUseCase;
-}
-private UpdateCaseUseUSer UpdateCaseUseUSer;
-public UserController(UpdateCaseUseUSer UpdateCaseUseUSer) {
-    this.UpdateCaseUseUSer = UpdateCaseUseUSer;
-}
+
 
 
 
