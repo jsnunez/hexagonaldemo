@@ -7,6 +7,8 @@ import application.UpdateCaseUseUSer;
 import domain.entity.User;
 import java.util.Scanner;
 
+import javax.swing.JOptionPane;
+
 public class UserController {
     private CreateUserUseCase createUserUseCase;
     private FindUserUseCase findUserUseCase;
@@ -31,19 +33,23 @@ public class UserController {
 
 
     public void start() {
-        try (Scanner scanner = new Scanner(System.in)) {
-            System.out.println("Enter user name: ");
-            String name = scanner.nextLine();
+        // try (Scanner scanner = new Scanner(System.in)) {
+            // System.out.println("Enter user name: ");
+            // String name = scanner.nextLine();
+String name = JOptionPane.showInputDialog("Ingrese su nombree");
+		JOptionPane.showMessageDialog(null, "Hello " + name);
+            // System.out.println("Enter user email: ");
+            // String email = scanner.nextLine();
 
-            System.out.println("Enter user email: ");
-            String email = scanner.nextLine();
-
+            String email = JOptionPane.showInputDialog("Ingrese su email");
+            JOptionPane.showMessageDialog(null, "su email es  " + email);
             User user = new User();
             user.setName(name);
             user.setEmail(email);
 
             createUserUseCase.execute(user);
-        }
+        // scanner.close();
+        // }
 
         System.out.println("User created successfully!");
     }

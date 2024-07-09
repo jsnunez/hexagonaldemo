@@ -23,7 +23,11 @@ public class Main {
 
         UserController consoleAdapter = new UserController(createUserUseCase,findUserUseCase,deleteUserUseCase,updateCaseUseUSer);
         
-        Object[] options = { "Crear usuario", "Buscar ususario", "Editar usuario", "Eliminar usuario, Salir" };
+        int x=0;
+        while (x!=4) {
+            
+       
+        Object[] options = { "Crear usuario", "Buscar ususario", "Editar usuario", "Eliminar usuario"," Salir" };
         Object color = JOptionPane.showInputDialog(null, "Seleccione Una Opcion", 
                 "MYSQL", JOptionPane.QUESTION_MESSAGE, null, options, "Crear usuario");
         
@@ -57,6 +61,14 @@ public class Main {
 
             consoleAdapter.eliminar();
         }
+        
+        if (selectedIndex == 4) {
+         
+           
+            //UserController consoleAdapter = new UserController(deleteUserUseCase);
 
-    }
+            System.exit(0);
+        }
+
+    } }
 }
